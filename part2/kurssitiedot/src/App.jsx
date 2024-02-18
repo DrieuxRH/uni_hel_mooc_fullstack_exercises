@@ -1,46 +1,4 @@
-const Course = ({course}) => {
-  console.log(course)
-    return (
-    <>
-      <Header name = {course.name} />
-      <Content parts = {course.parts} />
-      <Total parts= {course.parts} />
-    </>
-  )  
-  };
-  
-
-const Header = ({name}) => <h1>{name}</h1>
-
-const Total = ({ parts }) => {
-  
-  /* Getting the total using foreach method
-  let sum = 0;
-  parts.forEach((part) => sum += part.exercises);
-  console.log(sum)
-  return (
-    <p><b>Total of exercises {sum}</b></p>
-  )
-  */
-  
-  const partsTotal = parts.map( part => part.exercises)
-  const total = partsTotal.reduce( (s, p) => s + p, 0)
-  console.log(total)
-  return <p><b>Total of exercises {total}</b></p>
-}
-
-const Part = ({ part }) => 
-  <p>
-    {part.name} {part.exercises}
-  </p>
-
-const Content = ({parts}) => {
-  return(
-    parts.map(part => 
-      <Part part={part} key={part.id}/>
-    )
-  )
-}
+import Course from "./components/Course"
 
 /* Part rendering, every part added manually
 const Content = ({ parts }) => 
