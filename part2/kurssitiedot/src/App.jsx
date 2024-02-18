@@ -11,15 +11,20 @@ const Course = ({course}) => {
 const Header = ({name}) => <h1>{name}</h1>
 
 const Total = ({ parts }) => {
-  console.log(parts)
   
+  /* Getting the total using foreach method
   let sum = 0;
   parts.forEach((part) => sum += part.exercises);
   console.log(sum)
   return (
     <p><b>Total of exercises {sum}</b></p>
   )
+  */
   
+  const partsTotal = parts.map( part => part.exercises)
+  const total = partsTotal.reduce( (s, p) => s + p, 0)
+  console.log(total)
+  return <p><b>Total of exercises {total}</b></p>
 }
 
 const Part = ({ part }) => 
@@ -28,7 +33,6 @@ const Part = ({ part }) =>
   </p>
 
 const Content = ({parts}) => {
-  console.log('content parts: ', parts)
   return(
     parts.map(part => 
       <Part part={part} key={part.id}/>
